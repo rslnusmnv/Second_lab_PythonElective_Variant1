@@ -32,7 +32,8 @@ try:
     # TASK 3
     print('\nЗадание 3\n')
     grayFactors = [0.299, 0.587, 0.114]
-    grayImageСolors = np.uint8(imageColors[:, :, 0] * grayFactors[0] + imageColors[:, :, 1] * grayFactors[1] + imageColors[:, :, 2] * grayFactors[2])
+    grayImageСolors = imageColors * grayFactors
+    grayImageСolors = np.uint8(np.sum(grayImageСolors, axis = 2))
     grayImage = Image.fromarray(grayImageСolors)
     grayImage.save('Lena_grayscaled.png')
     print("Цветное изображение преобразовано в полутоновое и сохранено")
